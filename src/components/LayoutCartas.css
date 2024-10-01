@@ -1,0 +1,66 @@
+.layout-carta {
+  font-family: "Afacad Flux";
+  width: 250px;
+  height: 370px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 3px solid rgb(102, 102, 109);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.carta-rara {
+  background-image: radial-gradient(at 7.859942359100991% 62.3448108432388%, hsla(287.3394495412844, 54.77386934673366%, 60.98039215686274%, 1) 0%, hsla(287.3394495412844, 54.77386934673366%, 60.98039215686274%, 0) 100%), radial-gradient(at 17.743445435681117% 53.58138352033435%, hsla(265, 14.285714285714285%, 32.94117647058823%, 1) 0%, hsla(265, 14.285714285714285%, 32.94117647058823%, 0) 100%), radial-gradient(at 34.37820670806835% 3.911740312910017%, hsla(256.22641509433964, 70.66666666666667%, 55.88235294117647%, 1) 0%, hsla(256.22641509433964, 70.66666666666667%, 55.88235294117647%, 0) 100%), radial-gradient(at 23.43364039415594% 19.595266164713742%, hsla(238.06451612903226, 95.0920245398773%, 68.03921568627452%, 1) 0%, hsla(238.06451612903226, 95.0920245398773%, 68.03921568627452%, 0) 100%), radial-gradient(at 25.893459481601045% 93.93722552797587%, hsla(287.3394495412844, 54.77386934673366%, 60.98039215686274%, 1) 0%, hsla(287.3394495412844, 54.77386934673366%, 60.98039215686274%, 0) 100%), radial-gradient(at 85.161160741782% 18.540105427656982%, hsla(265, 14.285714285714285%, 32.94117647058823%, 1) 0%, hsla(265, 14.285714285714285%, 32.94117647058823%, 0) 100%), radial-gradient(at 90.9968292789055% 73.42361996099342%, hsla(256.22641509433964, 70.66666666666667%, 55.88235294117647%, 1) 0%, hsla(256.22641509433964, 70.66666666666667%, 55.88235294117647%, 0) 100%), radial-gradient(at 0.6039405045591639% 10.860724006976685%, hsla(238.06451612903226, 95.0920245398773%, 68.03921568627452%, 1) 0%, hsla(238.06451612903226, 95.0920245398773%, 68.03921568627452%, 0) 100%);
+}
+
+.carta-comum {
+  background-image: linear-gradient(95deg, #bd7519, #a96a19, #86520e);
+}
+
+.header-carta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px 5px;
+  margin-bottom: 6px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.65);
+  border-radius: 2px;
+}
+
+.header-carta span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.header-carta img {
+  max-width: 15px;
+}
+
+.imagem-carta img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+}
+
+.tipo-carta {
+  font-size: 0.8rem;
+}
+
+.dano-carta {
+  text-align: center;
+  margin: 0 0 5px;
+}
+
+.pontos-carta {
+  display: flex;
+  justify-content: space-between;
+  padding: 1px 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.65);
+  border-radius: 2px;
+  font-size: 0.9rem;
+}
+
+.span-negrito {
+  font-weight: 700;
+}

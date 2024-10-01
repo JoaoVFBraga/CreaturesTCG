@@ -1,0 +1,47 @@
+.cartas-home {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin: 60px auto 150px;
+  position: relative;
+  max-width: 500px;
+  transform: scale(0.9);
+}
+
+.layout-carta:hover {
+  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.678);
+  transition: 0.3s;
+  transform: scale(1.1) rotate(0deg);
+}
+
+.layout-carta:first-child {
+  transform: rotate(-25deg);
+  position: absolute;
+  z-index: 0;
+  left: -10px;
+  bottom: -35px;
+  transition: transform 0.3s ease;
+}
+
+.layout-carta:first-child:hover {
+  transform: scale(1.1) rotate(-25deg);
+}
+
+.layout-carta:nth-child(2) {
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.layout-carta:last-child {
+  transform: rotate(25deg);
+  position: absolute;
+  z-index: 2;
+  right: -10px;
+  bottom: -35px;
+  transition: transform 0.3s ease;
+}
+
+
+.layout-carta:last-child:hover {
+  transform: scale(1.1) rotate(25deg);
+}

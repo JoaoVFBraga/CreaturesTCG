@@ -1,0 +1,35 @@
+.header-container {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 15px 30px;
+}
+
+.titulo a {
+  color: white;
+  font-family: "MedievalSharp";
+  font-size: 2.2rem;
+}
+
+.btn-colecao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+  font-family: "Macondo";
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-colecao img {
+  max-width: 25px;
+}
+
+.btn-colecao:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
