@@ -64,3 +64,41 @@
 .span-negrito {
   font-weight: 700;
 }
+
+.cartaHome:hover {
+  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.678);
+  transition: 0.3s;
+  transform: scale(1.1) rotate(0deg);
+}
+
+.cartaHome:first-child {
+  transform: rotate(-25deg);
+  position: absolute;
+  z-index: 0;
+  left: -10px;
+  bottom: -35px;
+  transition: transform 0.3s ease;
+}
+
+.cartaHome:first-child:hover {
+  transform: scale(1.1) rotate(-25deg);
+}
+
+.cartaHome:nth-child(2) {
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.cartaHome:last-child {
+  transform: rotate(25deg);
+  position: absolute;
+  z-index: 2;
+  right: -10px;
+  bottom: -35px;
+  transition: transform 0.3s ease;
+}
+
+
+.cartaHome:last-child:hover {
+  transform: scale(1.1) rotate(25deg);
+}
