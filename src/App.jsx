@@ -97,15 +97,49 @@ function App() {
     }
   }
 
+  const [erros, setErros] = useState({});
+
   const [criatura, setCriatura] = useState("");
   const [tipo, setTipo] = useState("");
-  const [nome, setNome] = useState('Nome');
-  const [nivel, setNivel] = useState(0);
-  const [dano, setDano] = useState(0);
-  const [ataque, setAtaque] = useState(0);
-  const [defesa, setDefesa] = useState(0);
+  const [nome, setNome] = useState('');
+  const [nivel, setNivel] = useState('');
+  const [dano, setDano] = useState('');
+  const [ataque, setAtaque] = useState('');
+  const [defesa, setDefesa] = useState('');
   const [fundo, setFundo] = useState('/background/fundo-carta.jpg');
-  const [raridade, setRaridade] = useState('carta-comum')
+  const [raridade, setRaridade] = useState('carta-comum');
+
+
+  const reiniciaAnimacao = () => {
+    const reiniciaErros = Object.keys(erros).reduce((acc, chave) => {
+      acc[chave] = false;
+      return acc;
+    }, {});
+
+    setErros(reiniciaErros);
+  }
+  console.log(erros)
+  const verificaFormulario = (e) => {
+    setTimeout(() => {
+      const novosErros = {};
+
+      if (!criatura) novosErros.criatura = true;
+      if (!tipo) novosErros.tipo = true;
+      if (!nome.trim()) novosErros.nome = true;
+      if (!nivel) novosErros.nivel = true;
+      if (!dano) novosErros.dano = true;
+      if (!ataque) novosErros.ataque = true;
+      if (!defesa) novosErros.defesa = true;
+
+      setErros(novosErros);
+    }, 1)
+
+  }
+
+  const erroCorrigido = (e) => {
+    const id = e.target.id;
+    setErros({ ...erros, [id]: id.value === '' ? true : false, })
+  }
 
   const mudaFundo = () => {
     let fundoDefinido = ''
@@ -167,16 +201,19 @@ function App() {
       <Background />
       <Header />
       {/* <CartasHome exibeFrom={exibeFrom} setExibeForm={setExibeForm} /> */}
-      <div>
+      <div className='container-montagem'>
         <h2>Monte sua Creature</h2>
         <p>Defina todas as características da criatura para gerar sua carta</p>
-        <div>
+        <div className='form-container'>
           <div>
             <form>
-              <div>
+              <div className='item-form'>
                 <label htmlFor="criatura">Criatura:</label>
-                <select name="criatura" value={criatura} id="criatura" onChange={mudaCriatura} required>
-                  <option value="" disabled>Escolha</option>
+                <select name="criatura" value={criatura} id="criatura" className={`${erros.criatura ? 'input-vazio' : ''}`} onChange={(e) => {
+                  mudaCriatura(e);
+                  erroCorrigido(e)
+                }} required>
+                  <option value="" disabled>Selecione</option>
                   <option value="mago">Mago</option>
                   <option value="goblin">Goblin</option>
                   <option value="dragao">Dragão</option>
@@ -184,54 +221,75 @@ function App() {
                   <option value="marinha">Marinha</option>
                 </select>
               </div>
-              <div>
+              <div className='item-form'>
                 <label htmlFor="tipo">Tipo:</label>
-                <select name="tipo" id="tipo" value={tipo} onChange={mudaTipo} required>
+                <select name="tipo" id="tipo" className={`${erros.tipo ? 'input-vazio' : ''}`} value={tipo} onChange={(e) => {
+                  mudaTipo(e);
+                  erroCorrigido(e)
+                }} required>
                   <option value="" disabled>Selecione</option>
                   {tiposDisponiveis.map((tipo) => (
                     <option key={tipo} value={tipo}>{dadosDasCriaturas[criatura][tipo].tipo}</option>
                   ))}
                 </select>
               </div>
-              <div>
+              <div className='item-form ocupar-linha'>
                 <label htmlFor="nome">Nome da Carta:</label>
-                <input type="text" id='nome' maxLength={20} onChange={mudaNome} required />
+                <input type="text" id='nome' className={`${erros.nome ? 'input-vazio' : ''}`} maxLength={20} onChange={(e) => {
+                  mudaNome(e);
+                  erroCorrigido(e)
+                }} required />
               </div>
-              <div>
+              <div className='form-raridade item-form ocupar-linha'>
                 <span>Raridade:</span>
                 <input type="radio" name="raridade" id="comum" value='carta-comum' checked={raridade === 'carta-comum'} onChange={mudaRaridade} />
                 <label htmlFor="comum">Comum</label>
                 <input type="radio" name="raridade" id="epico" value='carta-rara' checked={raridade === 'carta-rara'} onChange={mudaRaridade} />
                 <label htmlFor="rara">Épica</label>
               </div>
-              <div>
+              <div className='item-form'>
                 <label htmlFor="nivel">Nível:</label>
-                <input type="number" id='nivel' placeholder='Máx.: 9' max={9} maxLength={1} onChange={mudaNivel} onInput={limitaEntrada1Caracter} required />
+                <input type="number" id='nivel' className={`${erros.nivel ? 'input-vazio' : ''}`} placeholder='Máx.: 9' max={9} maxLength={1} onChange={(e) => {
+                  mudaNivel(e);
+                  erroCorrigido(e)
+                }} onInput={limitaEntrada1Caracter} required />
               </div>
-              <div>
+              <div className='item-form'>
                 <label htmlFor="dano">Quantidade de Dano:</label>
-                <input type="number" id='dano' placeholder='Máx.: 9' max={10} onChange={mudaDano} onInput={limitaEntrada1Caracter} required />
+                <input type="number" id='dano' className={`${erros.dano ? 'input-vazio' : ''}`} placeholder='Máx.: 9' max={10} onChange={(e) => {
+                  mudaDano(e);
+                  erroCorrigido(e)
+                }} onInput={limitaEntrada1Caracter} required />
               </div>
-              <div>
+              <div className='item-form'>
                 <label htmlFor="ataque">Pontos de Ataque:</label>
-                <input type="number" id='ataque' placeholder='Máx.: 9999' max={9999} onChange={mudaAtaque} onInput={limitaEntrada4Caracter} required />
+                <input type="number" id='ataque' className={`${erros.ataque ? 'input-vazio' : ''}`} placeholder='Máx.: 9999' max={9999} onChange={(e) => {
+                  mudaAtaque(e);
+                  erroCorrigido(e)
+                }} onInput={limitaEntrada4Caracter} required />
               </div>
-              <div>
+              <div className='item-form'>
                 <label htmlFor="defesa">Pontos de Defesa:</label>
-                <input type="number" id='defesa' placeholder='Máx.: 9999' max={9999} onChange={mudaDefesa} onInput={limitaEntrada4Caracter} required />
+                <input type="number" id='defesa' className={`${erros.defesa ? 'input-vazio' : ''}`} placeholder='Máx.: 9999' max={9999} onChange={(e) => {
+                  mudaDefesa(e);
+                  erroCorrigido(e)
+                }} onInput={limitaEntrada4Caracter} required />
               </div>
-              <button type="submit">Criar Carta</button>
+              <button type="button" onClick={() => {
+                reiniciaAnimacao();
+                verificaFormulario();
+              }}>Salvar Carta</button>
             </form>
           </div>
           <div>
             <LayoutCartas
               criatura={criaturaEscolhida}
               tipo={tipoEscolhido}
-              nome={nome}
-              nivel={nivel}
-              dano={dano}
-              ataque={ataque}
-              defesa={defesa}
+              nome={nome.trim() === '' ? 'Nome' : nome}
+              nivel={nivel === '' ? 0 : nivel}
+              dano={dano === '' ? 0 : dano}
+              ataque={ataque === '' ? 0 : ataque}
+              defesa={defesa === '' ? 0 : defesa}
               img={fundo}
               raridade={raridade}
             />
