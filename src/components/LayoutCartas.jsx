@@ -2,7 +2,7 @@ import "./LayoutCartas.css"
 
 export default function LayoutCartas(props) {
   return (
-    <div className={`layout-carta ${props.raridade} ${props.classeHome}`}>
+    <div className={`layout-carta ${props.raridade} ${props.classeHome} ${props.classeConfirma}`}>
       <div className='header-carta'>
         <h4>{props.nome}</h4>
         <span><img src="/estrela/Starball_Red.svg.png" alt="" /> x{props.nivel}</span>

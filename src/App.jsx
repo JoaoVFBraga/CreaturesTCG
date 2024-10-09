@@ -4,10 +4,12 @@ import Background from './components/Background'
 import CartasHome from './components/CartasHome'
 import Header from './components/Header'
 import LayoutCartas from './components/LayoutCartas'
+import ConfirmaAdicionar from './components/ConfimaAdicionar'
 
 function App() {
 
-  const [exibeFrom, setExibeForm] = useState(false)
+  const [exibeFrom, setExibeForm] = useState(false);
+  const [exibeConfimaAdicionar, setExibeConfimaAdicionar] = useState(false);
 
   const dadosDasCriaturas = {
     mago: {
@@ -120,8 +122,8 @@ function App() {
   }
   console.log(erros)
   const verificaFormulario = (e) => {
+    const novosErros = {};
     setTimeout(() => {
-      const novosErros = {};
 
       if (!criatura) novosErros.criatura = true;
       if (!tipo) novosErros.tipo = true;
@@ -133,6 +135,11 @@ function App() {
 
       setErros(novosErros);
     }, 1)
+
+    setTimeout(() => {
+      const existeValorTrue = Object.values(novosErros).some(valor => valor === true);
+      setExibeConfimaAdicionar(!existeValorTrue)
+    }, 2)
 
   }
 
@@ -295,6 +302,20 @@ function App() {
             />
           </div>
         </div>
+        {exibeConfimaAdicionar ?
+          <ConfirmaAdicionar
+            criatura={criaturaEscolhida}
+            tipo={tipoEscolhido}
+            nome={nome.trim() === '' ? 'Nome' : nome}
+            nivel={nivel === '' ? 0 : nivel}
+            dano={dano === '' ? 0 : dano}
+            ataque={ataque === '' ? 0 : ataque}
+            defesa={defesa === '' ? 0 : defesa}
+            img={fundo}
+            raridade={raridade}
+          />
+          : null}
+
       </div>
     </div>
   )
