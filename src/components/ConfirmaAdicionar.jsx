@@ -2,6 +2,9 @@ import './ConfirmaAdicionar.css'
 import LayoutCartas from "./LayoutCartas"
 
 export default function ConfirmaAdicionar(props) {
+
+  const cancelaCartaCriada = () => props.setExibeConfirmaAdicionar(false)
+
   return (
     <div className='container-confirma'>
       <p>Deseja salvar a carta criada na sua coleção?</p>
@@ -18,7 +21,7 @@ export default function ConfirmaAdicionar(props) {
         raridade={props.raridade}
       />
       <div className='botoes-confirma-adicionar'>
-        <button className='botao-cancelar'>Cancelar</button>
+        <button className='botao-cancelar' onClick={cancelaCartaCriada}>Cancelar</button>
         <button className='botao-salvar'>Salvar</button>
       </div>
     </div>
