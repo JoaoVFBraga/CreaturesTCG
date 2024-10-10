@@ -4,7 +4,7 @@ import ConfirmaAdicionar from './ConfirmaAdicionar';
 import NumberInput from './NumberInput';
 import './MontagemCarta.css';
 
-export default function MontagemCarta() {
+export default function MontagemCarta(props) {
 
   const dadosDasCriaturas = {
     mago: {
@@ -95,7 +95,6 @@ export default function MontagemCarta() {
   }
 
   const [erros, setErros] = useState({});
-  const [exibeConfirmaAdicionar, setExibeConfirmaAdicionar] = useState(false);
 
   const [criatura, setCriatura] = useState("");
   const [tipo, setTipo] = useState("");
@@ -116,6 +115,11 @@ export default function MontagemCarta() {
 
     setErros(reiniciaErros);
   }
+
+  const escureceFundo = (valorVerificado) => {
+    if (!valorVerificado) { props.setEscureceFundo(true) }
+  }
+
   const verificaFormulario = () => {
     const novosErros = {};
     setTimeout(() => {
@@ -131,8 +135,12 @@ export default function MontagemCarta() {
       setErros(novosErros);
 
       const existeValorTrue = Object.values(novosErros).some(valor => valor === true);
-      setExibeConfirmaAdicionar(!existeValorTrue);
+      props.setExibeConfirmaAdicionar(!existeValorTrue);
+
+      escureceFundo(existeValorTrue);
     }, 1)
+
+
   }
 
   const erroCorrigido = (e) => {
@@ -288,7 +296,7 @@ export default function MontagemCarta() {
           />
         </div>
       </div>
-      {exibeConfirmaAdicionar ?
+      {props.exibeConfirmaAdicionar ?
         <ConfirmaAdicionar
           criatura={criaturaEscolhida}
           tipo={tipoEscolhido}
@@ -299,7 +307,9 @@ export default function MontagemCarta() {
           defesa={defesa === '' ? 0 : defesa}
           img={fundo}
           raridade={raridade}
-          setExibeConfirmaAdicionar={setExibeConfirmaAdicionar}
+          setExibeConfirmaAdicionar={props.setExibeConfirmaAdicionar}
+          setEscureceFundo={props.setEscureceFundo}
+          escureceFundo={props.escureceFundo}
         />
         : null}
     </div>
