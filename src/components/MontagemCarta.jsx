@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import LayoutCartas from './LayoutCartas';
 import ConfirmaAdicionar from './ConfirmaAdicionar';
 import NumberInput from './NumberInput';
@@ -106,6 +106,24 @@ export default function MontagemCarta(props) {
   const [fundo, setFundo] = useState('/background/fundo-carta.jpg');
   const [raridade, setRaridade] = useState('carta-comum');
 
+  const timerRef = useRef(null);
+  const controlaAnimacao = () => {
+    props.setExibeCartaAnimada(true);
+    props.setExibeConfirmaAdicionar(false);
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    timerRef.current = setTimeout(() => {
+      props.setEscureceFundo(false);
+      props.setExibeCartaAnimada(false);
+    }, 4000);
+  }
+
+  useEffect(() => {
+    if (props.escureceFundo === false) {
+      clearTimeout(timerRef.current);
+    }
+  }, [props.exibeCartaAnimada])
 
   const reiniciaAnimacao = () => {
     const reiniciaErros = Object.keys(erros).reduce((acc, chave) => {
@@ -117,7 +135,7 @@ export default function MontagemCarta(props) {
   }
 
   const escureceFundo = (valorVerificado) => {
-    if (!valorVerificado) { props.setEscureceFundo(true) }
+    props.setEscureceFundo(!valorVerificado)
   }
 
   const verificaFormulario = () => {
@@ -310,8 +328,26 @@ export default function MontagemCarta(props) {
           setExibeConfirmaAdicionar={props.setExibeConfirmaAdicionar}
           setEscureceFundo={props.setEscureceFundo}
           escureceFundo={props.escureceFundo}
+          setExibeCartaAnimada={props.setExibeCartaAnimada}
+          controlaAnimacao={controlaAnimacao}
         />
         : null}
+
+      {props.exibeCartaAnimada ?
+        <div className='cartaAnimacaoContainer'>
+          <LayoutCartas
+            classAnimacao="animacaoAdicionadaAColecao"
+            criatura={criaturaEscolhida}
+            tipo={tipoEscolhido}
+            nome={nome.trim() === '' ? 'Nome' : nome}
+            nivel={nivel === '' ? 0 : nivel}
+            dano={dano === '' ? 0 : dano}
+            ataque={ataque === '' ? 0 : ataque}
+            defesa={defesa === '' ? 0 : defesa}
+            img={fundo}
+            raridade={raridade}
+          />
+        </div> : null}
     </div>
   )
 }

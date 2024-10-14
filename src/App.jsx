@@ -13,14 +13,15 @@ function App() {
   const [exibeFrom, setExibeForm] = useState(false);
   const [exibeConfirmaAdicionar, setExibeConfirmaAdicionar] = useState(false);
   const [escureceFundo, setEscureceFundo] = useState(false);
+  const [exibeCartaAnimada, setExibeCartaAnimada] = useState(false);
 
   return (
     <div>
       <Background />
-      {escureceFundo ? <FundoPreto setEscureceFundo={setEscureceFundo} setExibeConfirmaAdicionar={setExibeConfirmaAdicionar} /> : null}
+      {escureceFundo ? <FundoPreto setEscureceFundo={setEscureceFundo} setExibeConfirmaAdicionar={setExibeConfirmaAdicionar} setExibeCartaAnimada={setExibeCartaAnimada} exibeCartaAnimada={exibeCartaAnimada} /> : null}
       <Header />
       {/* <CartasHome exibeFrom={exibeFrom} setExibeForm={setExibeForm} /> */}
-      <MontagemCarta escureceFundo={escureceFundo} setEscureceFundo={setEscureceFundo} exibeConfirmaAdicionar={exibeConfirmaAdicionar} setExibeConfirmaAdicionar={setExibeConfirmaAdicionar} />
+      <MontagemCarta escureceFundo={escureceFundo} setEscureceFundo={setEscureceFundo} exibeConfirmaAdicionar={exibeConfirmaAdicionar} setExibeConfirmaAdicionar={setExibeConfirmaAdicionar} setExibeCartaAnimada={setExibeCartaAnimada} exibeCartaAnimada={exibeCartaAnimada} />
     </div>
   )
 }

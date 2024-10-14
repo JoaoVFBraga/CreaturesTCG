@@ -102,3 +102,7 @@
 .cartaHome:last-child:hover {
   transform: scale(1.1) rotate(25deg);
 }
+
+.animacaoAdicionadaAColecao {
+  transform: scale(0.85);
+}
