@@ -6,6 +6,7 @@ export default function FundoPreto(props) {
     props.setEscureceFundo(false);
     props.setExibeConfirmaAdicionar(false);
     props.setExibeCartaAnimada(false);
+    props.setExibeCartaEscolhida(false);
   }
 
   return (

@@ -4,11 +4,9 @@ import { useState } from "react"
 
 export default function CartasHome(props) {
 
-  const [exibeIntro, setExibeIntro] = useState(true)
-
   return (
     <div>
-      {exibeIntro ?
+      {props.exibeIntro ?
         <div>
           <div className={styles.cartasHome}>
             <LayoutCartas
@@ -49,7 +47,7 @@ export default function CartasHome(props) {
             <h2>Crie as cartas mais poderosas</h2>
             <p>Com Creatures TCG, você pode criar suas cartas, desafiar seus amigos e ser o campeão dos jogos</p>
             <button onClick={() => {
-              setExibeIntro(state => !state);
+              props.setExibeIntro(state => !state);
               props.setExibeForm(state => !state);
             }}>Começe a criar</button>
           </div>

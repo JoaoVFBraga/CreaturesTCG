@@ -17,22 +17,6 @@
   animation-duration: 0.5s;
 }
 
-@keyframes efeito-container {
-  0% {
-    opacity: 0;
-    filter: blur(20px);
-    transform: translate(-30%, -50%);
-    transition: all 1s;
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translate(-50%, -50%);
-    transition: all 1s;
-  }
-}
-
 .container-confirma>p {
   font-size: 1.4rem;
 }
