@@ -11,12 +11,24 @@ export default function MinhaColecao(props) {
 
   const [render, setRender] = useState(false);
   const [exibeConfirmaExcluir, setExibeConfirmaExcluir] = useState(false);
+  const [exibeBaralho, setExibeBaralho] = useState(false);
+  const [pesquisa, setPesquisa] = useState('');
 
   const cartasSalvas = localStorage.getItem('cartas-salvas')
   const cartasRenderizadas = cartasSalvas ? JSON.parse(cartasSalvas) : [];
   const dadosRef = useRef(null);
   const timerExcluir = useRef(null);
 
+  const confereTamanho = cartasRenderizadas.length < 2 ? true : false;
+
+  const cartasFiltradas = cartasRenderizadas.filter((carta) => {
+    return carta.nome.toLowerCase().includes(pesquisa.toLowerCase())
+  })
+
+  const atualizaPesquisa = (e) => {
+    setPesquisa(e.target.value);
+    console.log(pesquisa)
+  }
   const removeCarta = () => {
     const novasCartas = cartasRenderizadas.filter((carta) => {
       return carta.id !== dadosRef.current.id
@@ -27,13 +39,14 @@ export default function MinhaColecao(props) {
       props.setExibeCartaEscolhida(false);
       props.setEscureceFundo(false);
       setRender(false);
-    }, 1900)
+    }, 1400)
   }
 
   useEffect(() => {
     setExibeConfirmaExcluir(false);
     clearTimeout(timerExcluir.current);
     setRender(false);
+    setExibeBaralho(false);
   }, [props.escureceFundo])
 
   const exibirCarta = (obj) => {
@@ -50,6 +63,17 @@ export default function MinhaColecao(props) {
     props.setEscureceFundo(false);
     setExibeConfirmaExcluir(false);
   }
+  const fechaBaralho = () => {
+    props.setEscureceFundo(false);
+    setExibeBaralho(false);
+  }
+  const mostraBaralho = () => {
+    setTimeout(() => {
+      setExibeBaralho(true);
+    }, 1)
+    props.setEscureceFundo(true);
+
+  }
 
   return (
     <div className='minha-colecao-container'>
@@ -58,13 +82,13 @@ export default function MinhaColecao(props) {
       <div className='cartas-filtradas-container'>
         <div className='filtragem-container'>
           <div className='input-pesquisar'>
-            <input type="text" />
+            <input type="text" value={pesquisa} onChange={atualizaPesquisa} />
             <img src="/icones/icons8-search-50.png" alt="" />
           </div>
-          <button className='btn-com-img'>Filtros <img src="/icones/icons8-filter-50.png" /></button>
+          <button className='btn-com-img' onClick={mostraBaralho}>Modo baralho <img src="/icones/icons8-eye-48.png" /></button>
         </div>
         <div className='grid-cartas'>
-          {cartasRenderizadas.length > 0 ? cartasRenderizadas.map((obj) => {
+          {cartasFiltradas.length > 0 ? cartasFiltradas.map((obj) => {
             return (
               <LayoutCartas
                 classGrid='carta-grid'
@@ -81,7 +105,7 @@ export default function MinhaColecao(props) {
                 onClick={() => exibirCarta(obj)}
               />
             )
-          }) : (<p>Não existem cartas salvas</p>)}
+          }) : (<p>Não foi possível localizar nenhuma carta. Você pode criar mais em "Criar Cartas".</p>)}
         </div>
       </div>
       {props.exibeCartaEscolhida ?
@@ -115,33 +139,42 @@ export default function MinhaColecao(props) {
           )}
         </div> : null
       }
+      {exibeBaralho &&
+        <div className='container-baralho'>
+          {confereTamanho ?
+            (
+              <p className='texto-aviso'>Crie pelo menos 2 cartas para exibir em modo baralho</p>
+            ) :
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={30}
+              effect={'cards'}
+              grabCursor={true}
+              navigation={true}
+              modules={[EffectCards, Navigation]}
+              className="mySwiper"
+            >
+              {cartasRenderizadas.map((obj) => {
+                return (
+                  <SwiperSlide key={obj.id} className='swiper-slide-baralho'>
+                    <LayoutCartas
+                      criatura={obj.criatura}
+                      tipo={obj.tipo}
+                      nome={obj.nome}
+                      nivel={obj.nivel}
+                      dano={obj.dano}
+                      ataque={obj.ataque}
+                      defesa={obj.defesa}
+                      img={obj.img}
+                      raridade={obj.raridade} />
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper>
+          }
+          <button onClick={fechaBaralho}>Voltar</button>
+        </div>
+      }
     </div>
   )
 }
-
-{/* <Swiper
-        slidesPerView={1}
-        spaceBetween={30}
-        effect={'cards'}
-        grabCursor={true}
-        navigation={true}
-        modules={[EffectCards, Navigation]}
-        className="mySwiper"
-      >
-        {cartasRenderizadas.map((obj) => {
-          return (
-            <SwiperSlide key={obj.id} className='swiper-slide-baralho'>
-              <LayoutCartas
-                criatura={obj.criatura}
-                tipo={obj.tipo}
-                nome={obj.nome}
-                nivel={obj.nivel}
-                dano={obj.dano}
-                ataque={obj.ataque}
-                defesa={obj.defesa}
-                img={obj.img}
-                raridade={obj.raridade} />
-            </SwiperSlide>
-          )
-        })}
-      </Swiper> */}

@@ -9,11 +9,6 @@
   text-align: center;
 }
 
-/* .mySwiper {
-  width: 250px;
-  height: 380px;
-}
-
 .swiper-slide-baralho {
   display: flex;
   align-items: center;
@@ -29,7 +24,47 @@
 
 .swiper-button-prev {
   left: 10px;
-} */
+}
+
+.container-baralho {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: efeito-container 0.3s;
+  width: 300px;
+  height: 400px;
+}
+
+.container-baralho button {
+  background: none;
+  border: none;
+  color: white;
+  font-family: 'Afacad Flux';
+  font-size: 1.5rem;
+  border-bottom: 2px solid white;
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.3s transform;
+  cursor: pointer;
+}
+
+.container-baralho button:hover {
+  transform: translateX(-50%) scale(1.1);
+  transition: 0.3s;
+}
+
+.texto-aviso {
+  text-align: center;
+  font-size: 1.4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .minha-colecao-container {
   max-width: 1200px;
@@ -158,7 +193,7 @@
 /* Animação exclusão */
 
 .animacao-exclusao {
-  animation: anima-exclusao 2s;
+  animation: anima-exclusao 1.5s;
 }
 
 @keyframes anima-exclusao {
