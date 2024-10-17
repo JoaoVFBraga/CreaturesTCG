@@ -95,7 +95,6 @@ export default function MontagemCarta(props) {
   }
 
   const [erros, setErros] = useState({});
-
   const [criatura, setCriatura] = useState("");
   const [tipo, setTipo] = useState("");
   const [nome, setNome] = useState('');
@@ -105,6 +104,8 @@ export default function MontagemCarta(props) {
   const [defesa, setDefesa] = useState('');
   const [fundo, setFundo] = useState('/background/fundo-carta.jpg');
   const [raridade, setRaridade] = useState('carta-comum');
+
+  const conjuntoSet = { setErros, setCriatura, setTipo, setNome, setNivel, setDano, setAtaque, setDefesa, setFundo, setRaridade };
 
   const timerRef = useRef(null);
   const controlaAnimacao = () => {
@@ -116,6 +117,16 @@ export default function MontagemCarta(props) {
     timerRef.current = setTimeout(() => {
       props.setEscureceFundo(false);
       props.setExibeCartaAnimada(false);
+      setErros({});
+      setCriatura('');
+      setTipo('');
+      setNome('');
+      setNivel('');
+      setDano('');
+      setAtaque('');
+      setDefesa('');
+      setFundo('/background/fundo-carta.jpg');
+      setRaridade('carta-comum');
     }, 4000);
   }
 
@@ -258,7 +269,7 @@ export default function MontagemCarta(props) {
             </div>
             <div className='item-form ocupar-linha'>
               <label htmlFor="nome">Nome da Carta:</label>
-              <input type="text" id='nome' className={`${erros.nome ? 'input-vazio' : ''}`} maxLength={20} onChange={(e) => {
+              <input type="text" value={nome} id='nome' className={`${erros.nome ? 'input-vazio' : ''}`} maxLength={20} onChange={(e) => {
                 mudaNome(e);
                 erroCorrigido(e)
               }} required />
@@ -270,25 +281,25 @@ export default function MontagemCarta(props) {
               <input type="radio" name="raridade" id="epico" value='carta-rara' checked={raridade === 'carta-rara'} onChange={mudaRaridade} />
               <label htmlFor="epico">Épica</label>
             </div>
-            <NumberInput htmlFor={"nivel"} textoLabel="Nível" id={"nivel"} className={erros.nivel ? 'input-vazio' : ''} placeholder={"Máx.: 9"}
+            <NumberInput htmlFor={"nivel"} value={nivel} textoLabel="Nível" id={"nivel"} className={erros.nivel ? 'input-vazio' : ''} placeholder={"Máx.: 9"}
               onChange={(e) => {
                 mudaNivel(e);
                 erroCorrigido(e);
               }}
               onInput={limitaEntrada1Caracter} />
-            <NumberInput htmlFor={"dano"} textoLabel="Dano" id={"dano"} className={erros.dano ? 'input-vazio' : ''} placeholder={"Máx.: 9"}
+            <NumberInput htmlFor={"dano"} value={dano} textoLabel="Dano" id={"dano"} className={erros.dano ? 'input-vazio' : ''} placeholder={"Máx.: 9"}
               onChange={(e) => {
                 mudaDano(e);
                 erroCorrigido(e);
               }}
               onInput={limitaEntrada1Caracter} />
-            <NumberInput htmlFor={"ataque"} textoLabel="Pontos de Ataque" id={"ataque"} className={erros.ataque ? 'input-vazio' : ''} placeholder={"Máx.: 9999"}
+            <NumberInput htmlFor={"ataque"} value={ataque} textoLabel="Pontos de Ataque" id={"ataque"} className={erros.ataque ? 'input-vazio' : ''} placeholder={"Máx.: 9999"}
               onChange={(e) => {
                 mudaAtaque(e);
                 erroCorrigido(e);
               }}
               onInput={limitaEntrada4Caracter} />
-            <NumberInput htmlFor={"defesa"} textoLabel="Pontos de Defesa" id={"defesa"} className={erros.defesa ? 'input-vazio' : ''} placeholder={"Máx.: 9999"}
+            <NumberInput htmlFor={"defesa"} value={defesa} textoLabel="Pontos de Defesa" id={"defesa"} className={erros.defesa ? 'input-vazio' : ''} placeholder={"Máx.: 9999"}
               onChange={(e) => {
                 mudaDefesa(e);
                 erroCorrigido(e);
@@ -330,6 +341,7 @@ export default function MontagemCarta(props) {
           escureceFundo={props.escureceFundo}
           setExibeCartaAnimada={props.setExibeCartaAnimada}
           controlaAnimacao={controlaAnimacao}
+          {...conjuntoSet}
         />
         : null}
 
