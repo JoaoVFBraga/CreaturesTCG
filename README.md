@@ -1,8 +1,10 @@
-# React + Vite
+📌 Projeto Creatures TCG
+📃 Descrição
+O projeto Creatures TCG foi criado com o intuito de aprender sobre o uso de bibliotecas e fixar meus conhecimentos em React, principalmente sobre as funcionalidades que não estão presentes no JavaScript convencional, tais como: Componentização e o uso de Hooks. O projeto apresenta várias funcionalidades: 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Possui um formulário para que se possa criar a sua carta personalizada
+Apresenta uma área chamada "Minha Coleção", onde é possível visualizar ou excluir cada carta separadamente
+Dentro de minha coleção foi implementada uma área de pesquisa, para que seja possível pesquisar entra as cartas por nomes específicos
+É possível também visualizar as cartas criadas em formato de baralho, para isso utilizei a biblioteca Swiper
+💻 Tecnologias Usadas
+Foram usadas 4 tecnologias para o desenvolvimento do projeto: HTML, CSS, JavaScript e React
