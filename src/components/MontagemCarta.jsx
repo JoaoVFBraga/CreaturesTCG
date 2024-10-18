@@ -79,17 +79,17 @@ export default function MontagemCarta(props) {
       esqueleto: {
         criatura: "Morto-Vivo",
         tipo: "Esqueleto",
-        imagem: "/criaturas/esqueleto.png"
+        imagem: "/criaturas/esqueleto.jpg"
       },
       zumbi: {
         criatura: "Morto-Vivo",
         tipo: "Zumbi",
-        imagem: "/criaturas/zumbi.png"
+        imagem: "/criaturas/zumbi.jpg"
       },
       fantasma: {
         criatura: "Morto-Vivo",
         tipo: "Fantasma",
-        imagem: "/criaturas/fantasma.png"
+        imagem: "/criaturas/fantasma.jpg"
       },
     }
   }

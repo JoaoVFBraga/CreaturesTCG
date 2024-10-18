@@ -34,7 +34,7 @@ export default function CartasHome(props) {
             <LayoutCartas
               nome="Esqueleto Frágil"
               nivel="1"
-              img="/criaturas/esqueleto.png"
+              img="/criaturas/esqueleto.jpg"
               criatura="Morto-Vivo"
               tipo="Trevas"
               dano="1"

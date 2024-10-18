@@ -278,15 +278,15 @@ input[type=number]::-webkit-inner-spin-button {
     70% {
       opacity: 1;
       transform: translate(0, -50%) scale(0.7);
-      top: 21vh;
-      left: calc(100vw - 200px - (50% - 120px));
+      top: 190px;
+      left: calc(100vw - 180px - (50% - 120px));
     }
 
     100% {
       opacity: 0;
       transform: translate(0, -75%) scale(0);
-      top: 17vh;
-      left: calc(100vw - 150px - (50% - 120px));
+      top: 155px;
+      left: calc(100vw - 130px - (50% - 120px));
     }
   }
 }

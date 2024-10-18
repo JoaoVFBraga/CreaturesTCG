@@ -133,6 +133,16 @@
   align-items: center;
 }
 
+.texto-sem-carta {
+  text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .minha-colecao-container {
+    margin: 50px 10px;
+  }
+}
+
 @media (max-width: 650px) {
   .minha-colecao-container>h2 {
     font-size: 2rem;

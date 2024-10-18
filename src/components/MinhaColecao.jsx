@@ -104,7 +104,7 @@ export default function MinhaColecao(props) {
                 onClick={() => exibirCarta(obj)}
               />
             )
-          }) : (<p>Não foi possível localizar nenhuma carta. Você pode criar mais em "Criar Cartas".</p>)}
+          }) : (<p className='texto-sem-carta'>Não foi possível localizar nenhuma carta. Você pode criar mais em "Criar Cartas".</p>)}
         </div>
       </div>
       {props.exibeCartaEscolhida ?
