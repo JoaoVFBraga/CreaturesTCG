@@ -48,12 +48,6 @@
   transition: 0.3s;
 }
 
-@media (max-width: 500px) {
-  .container-baralho {
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-}
-
 /* Container da coleção */
 .minha-colecao-container>h2 {
   font-size: 3rem;
