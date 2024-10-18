@@ -27,7 +27,6 @@ export default function MinhaColecao(props) {
 
   const atualizaPesquisa = (e) => {
     setPesquisa(e.target.value);
-    console.log(pesquisa)
   }
   const removeCarta = () => {
     const novasCartas = cartasRenderizadas.filter((carta) => {

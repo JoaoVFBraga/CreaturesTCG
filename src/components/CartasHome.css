@@ -1,0 +1,128 @@
+.cartasHome {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin: 60px auto 150px;
+  position: relative;
+  max-width: 500px;
+  transform: scale(0.9);
+}
+
+.cartaHome:hover {
+  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.678);
+  transition: 0.3s;
+  transform: scale(1.1) rotate(0deg);
+}
+
+.cartaHome:first-child {
+  transform: rotate(-25deg);
+  position: absolute;
+  z-index: 0;
+  left: -10px;
+  bottom: -35px;
+  transition: transform 0.3s ease;
+}
+
+.cartaHome:first-child:hover {
+  transform: scale(1.1) rotate(-25deg);
+}
+
+.cartaHome:nth-child(2) {
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.cartaHome:last-child {
+  transform: rotate(25deg);
+  position: absolute;
+  z-index: 2;
+  right: -10px;
+  bottom: -35px;
+  transition: transform 0.3s ease;
+}
+
+
+.cartaHome:last-child:hover {
+  transform: scale(1.1) rotate(25deg);
+}
+
+.introducao {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.introducao h2 {
+  font-family: "MedievalSharp";
+  font-size: 3rem;
+  text-align: center;
+}
+
+.introducao p {
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 20px 10px;
+}
+
+.introducao button {
+  font-family: "Macondo";
+  font-size: 2rem;
+  padding: 5px 20px;
+  border-radius: 8px;
+  border: none;
+  color: var(--cor-primaria);
+  background: var(--gradiente-roxo);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.introducao button:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+
+/* Media Queries */
+@media (max-width: 650px) {
+  .introducao h2 {
+    font-size: 2.5rem;
+  }
+
+  .introducao p {
+    font-size: 1.4rem;
+  }
+
+  .introducao button {
+    font-size: 1.8rem;
+  }
+
+  .cartasHome {
+    margin: 20px auto 80px;
+    max-width: 450px;
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 500px) {
+  .introducao h2 {
+    font-size: 2.2rem;
+  }
+
+  .introducao p {
+    font-size: 1.3rem;
+  }
+
+  .introducao button {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .cartasHome {
+    margin: 0px auto 0px;
+    max-width: 450px;
+    top: -30px;
+    transform: scale(0.6);
+  }
+}

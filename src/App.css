@@ -1,3 +1,20 @@
+:root {
+  /* Cores */
+  --cor-primaria: white;
+  --vermelho1: rgb(255, 54, 54);
+  --vermelho2: rgb(173, 33, 33);
+  --placeholder: rgba(255, 255, 255, 0.5);
+  --erro-formulario: rgba(255, 0, 0, 0.774);
+  /* Gradientes */
+  --gradiente-roxo: linear-gradient(95deg, #8a2be2, #8145a1);
+  /* Fundos */
+  --fundo-item-formulario: rgba(255, 255, 255, 0.281);
+  --fundo-options: rgba(0, 0, 0, 0.719);
+  --fundo-confirma: rgba(12, 12, 12, 0.966);
+}
+
+
+/* Botão com imagem */
 .btn-com-img {
   display: flex;
   align-items: center;
@@ -20,6 +37,19 @@
   transition: 0.3s;
 }
 
+@media (max-width: 650px) {
+  .btn-com-img {
+    gap: 3px;
+    font-size: 1rem;
+  }
+
+  .btn-com-img img {
+    max-width: 20px;
+  }
+}
+
+
+/* Animações */
 @keyframes efeito-container {
   0% {
     opacity: 0;

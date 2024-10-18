@@ -1,4 +1,4 @@
-import styles from './CartasHome.module.css'
+import './CartasHome.css'
 import LayoutCartas from '../components/LayoutCartas'
 import { useState } from "react"
 
@@ -8,7 +8,7 @@ export default function CartasHome(props) {
     <div>
       {props.exibeIntro ?
         <div>
-          <div className={styles.cartasHome}>
+          <div className="cartasHome">
             <LayoutCartas
               nome="Goblin Gigante"
               nivel="6"
@@ -43,7 +43,7 @@ export default function CartasHome(props) {
               raridade="carta-comum"
               classeHome='cartaHome' />
           </div>
-          <div className={styles.introducao}>
+          <div className="introducao">
             <h2>Crie as cartas mais poderosas</h2>
             <p>Com Creatures TCG, você pode criar suas cartas, desafiar seus amigos e ser o campeão dos jogos</p>
             <button onClick={() => {

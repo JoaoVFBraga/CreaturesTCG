@@ -1,6 +1,7 @@
+/* Container Confirma Adicionar */
 .container-confirma {
-  background-color: rgba(12, 12, 12, 0.966);
-  position: absolute;
+  background-color: var(--fundo-confirma);
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -11,7 +12,7 @@
   width: 450px;
   height: 480px;
   border-radius: 10px;
-  border: 2px solid white;
+  border: 2px solid var(--cor-primaria);
   z-index: 2;
   animation: efeito-container;
   animation-duration: 0.5s;
@@ -34,7 +35,7 @@
 .botao-cancelar {
   border: none;
   background: none;
-  color: rgb(255, 54, 54);
+  color: var(--vermelho1);
   font-family: 'Afacad Flux';
   font-size: 1.3rem;
   transition: 0.3s;
@@ -44,7 +45,7 @@
 .botao-cancelar:hover {
   transform: scale(1.05);
   transition: 0.2s;
-  color: rgb(173, 33, 33);
+  color: var(--vermelho2);
 }
 
 .botao-salvar {
@@ -53,8 +54,8 @@
   font-weight: 600;
   padding: 2px 15px;
   border: none;
-  background: linear-gradient(95deg, #8a2be2, #8145a1);
-  color: white;
+  background: var(--gradiente-roxo);
+  color: var(--cor-primaria);
   border-radius: 8px;
   transition: 0.3s;
   cursor: pointer;
@@ -63,4 +64,68 @@
 .botao-salvar:hover {
   transform: scale(1.1);
   transition: 0.2s;
+}
+
+@media (max-width: 550px) {
+  .container-confirma {
+    width: 400px;
+    height: 430px;
+    text-align: center;
+  }
+
+  .carta-confirma-adicionar {
+    transform: scale(0.75);
+  }
+
+  .container-confirma>p {
+    top: 30px;
+    position: relative;
+  }
+
+  .botoes-confirma-adicionar {
+    top: -30px;
+    position: relative;
+  }
+}
+
+@media (max-width: 450px) {
+  .container-confirma {
+    width: 360px;
+    height: 410px;
+  }
+
+  .carta-confirma-adicionar {
+    transform: scale(0.75);
+  }
+
+  .container-confirma>p {
+    top: 35px;
+    position: relative;
+  }
+
+  .botoes-confirma-adicionar {
+    top: -35px;
+    position: relative;
+  }
+}
+
+@media (max-width: 390px) {
+  .container-confirma {
+    width: 320px;
+    height: 410px;
+  }
+
+  .carta-confirma-adicionar {
+    transform: scale(0.75);
+  }
+
+  .container-confirma>p {
+    top: 35px;
+    position: relative;
+  }
+
+  .botoes-confirma-adicionar {
+    top: -35px;
+    position: relative;
+  }
 }

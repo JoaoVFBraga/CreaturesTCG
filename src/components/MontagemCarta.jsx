@@ -117,6 +117,12 @@ export default function MontagemCarta(props) {
     timerRef.current = setTimeout(() => {
       props.setEscureceFundo(false);
       props.setExibeCartaAnimada(false);
+    }, 4000);
+  }
+
+  useEffect(() => {
+    if (props.escureceFundo === false) {
+      clearTimeout(timerRef.current);
       setErros({});
       setCriatura('');
       setTipo('');
@@ -127,14 +133,13 @@ export default function MontagemCarta(props) {
       setDefesa('');
       setFundo('/background/fundo-carta.jpg');
       setRaridade('carta-comum');
-    }, 4000);
-  }
+    }
+  }, [props.exibeCartaAnimada]);
 
   useEffect(() => {
-    if (props.escureceFundo === false) {
-      clearTimeout(timerRef.current);
-    }
+    window.scrollTo(0, 0);
   }, [props.exibeCartaAnimada])
+
 
   const reiniciaAnimacao = () => {
     const reiniciaErros = Object.keys(erros).reduce((acc, chave) => {
@@ -311,7 +316,7 @@ export default function MontagemCarta(props) {
             }}>Salvar Carta</button>
           </form>
         </div>
-        <div>
+        <div className='container-carta-previa'>
           <LayoutCartas
             criatura={criaturaEscolhida}
             tipo={tipoEscolhido}

@@ -7,12 +7,27 @@
 }
 
 .titulo a {
-  color: white;
+  color: var(--cor-primaria);
   font-family: "MedievalSharp";
   font-size: 2.2rem;
 }
 
 .div-btn-header {
   display: flex;
+  align-items: center;
   gap: 20px;
+}
+
+@media (max-width: 650px) {
+  .titulo a {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 525px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
 }
